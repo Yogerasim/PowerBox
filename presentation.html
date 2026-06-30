@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PowerBox — презентация</title>
+  <style>
+    :root { --bg:#060708; --fg:#f4f1ea; --muted:#b9b1a4; --accent:#d9ff6a; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--fg); font-family:Inter, Arial, sans-serif; }
+    section { min-height:100vh; padding:7vw; display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden; }
+    h1 { font-size:clamp(54px,9vw,132px); line-height:.88; margin:0 0 32px; letter-spacing:-.07em; }
+    h2 { font-size:clamp(38px,6vw,82px); line-height:.95; margin:0 0 28px; letter-spacing:-.05em; }
+    p, li { font-size:clamp(19px,2vw,30px); line-height:1.35; color:var(--muted); max-width:980px; }
+    ul { padding-left:1.2em; }
+    .hero { background:linear-gradient(90deg,rgba(0,0,0,.75),rgba(0,0,0,.15)), url("Docs/Presentation/3.png") center/cover no-repeat; }
+    .grid { display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center; }
+    .image { width:100%; border-radius:28px; box-shadow:0 24px 90px rgba(0,0,0,.55); }
+    .tag { color:var(--accent); text-transform:uppercase; letter-spacing:.18em; font-size:14px; margin-bottom:24px; }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:36px; }
+    .card { border:1px solid rgba(255,255,255,.14); border-radius:24px; padding:28px; background:rgba(255,255,255,.055); min-height:220px; }
+    .card b { font-size:28px; display:block; margin-bottom:12px; }
+    .anomaly { background:linear-gradient(90deg,rgba(0,0,0,.8),rgba(0,0,0,.28)), url("https://zinziverpolina.github.io/anomaly-powerbox-opencall/assets/concept/palki.png") center/cover no-repeat; }
+    .media { background:#030405; padding:0; }
+    iframe { width:100%; height:100vh; border:0; filter:saturate(1.08) contrast(1.05); }
+    .overlay { position:absolute; inset:auto 7vw 7vw 7vw; padding:28px; border-radius:24px; background:rgba(0,0,0,.62); backdrop-filter:blur(14px); }
+    a { color:var(--accent); }
+    @media (max-width:800px){ .grid,.cards{grid-template-columns:1fr;} section{padding:32px;} }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="tag">Hardware / TouchDesigner / MIDI / Wi‑Fi</div>
+  <h1>PowerBox</h1>
+  <p>Универсальная коробка управления питанием: 8 каналов 220V для света, инсталляций, сценографии и живых медиа-сцен.</p>
+</section>
+
+<section>
+  <div class="grid">
+    <div>
+      <div class="tag">Зачем</div>
+      <h2>Один физический интерфейс для управления пространством</h2>
+      <p>PowerBox превращает обычные электрические устройства в управляемые элементы инсталляции: лампы, LED-блоки питания, дым, моторы, световые объекты и сценографию.</p>
+    </div>
+    <img class="image" src="Docs/Presentation/1.png" alt="PowerBox presentation image 1">
+  </div>
+</section>
+
+<section>
+  <div class="tag">Польза</div>
+  <h2>Что это даёт проекту</h2>
+  <div class="cards">
+    <div class="card"><b>Быстрый монтаж</b><p>8 розеток сразу готовы к управлению без сборки отдельной схемы под каждый объект.</p></div>
+    <div class="card"><b>Живой свет</b><p>Свет может включаться, пульсировать, реагировать на сценарий, музыку или TouchDesigner.</p></div>
+    <div class="card"><b>Повторяемость</b><p>Прошивки, TD-патчи, схемы и документация хранятся в одном репозитории.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="grid">
+    <img class="image" src="Docs/Presentation/2.png" alt="PowerBox presentation image 2">
+    <div>
+      <div class="tag">Управление</div>
+      <h2>TouchDesigner, UDP, MIDI, Wi‑Fi</h2>
+      <ul>
+        <li>UDP-команды из TouchDesigner</li>
+        <li>web UI и fallback AP-режим ESP</li>
+        <li>MIDI-тесты, включая Roland T‑8</li>
+        <li>ESP8266 D1 legacy-версия и новая ESP32‑S3 версия</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="anomaly">
+  <div class="tag">Инсталляции</div>
+  <h2>PowerBox как нервная система объекта</h2>
+  <p>В site-specific проектах коробка становится скрытым техническим слоем: она синхронизирует свет, дым, питание и реакции объектов, позволяя ландшафту вести себя как активная система.</p>
+</section>
+
+<section>
+  <div class="grid">
+    <div>
+      <div class="tag">Версии</div>
+      <h2>Старая и новая коробка</h2>
+      <p>Legacy-версия: ESP8266 D1 + 8-канальный релейный модуль 12V с опторазвязкой. Новая версия: ESP32‑S3‑DevKitC‑1 N16R8 с U.FL/IPEX для внешней антенны + тот же тип реле 8 каналов 12V, 220V 10A по паспорту модуля.</p>
+    </div>
+    <img class="image" src="Docs/Presentation/3.png" alt="PowerBox cover image">
+  </div>
+</section>
+
+<section class="media">
+  <iframe src="https://zinziverpolina.github.io/anomaly-powerbox-opencall/" title="Anomaly PowerBox Open Call"></iframe>
+  <div class="overlay">
+    <div class="tag">Готовые проекты / видео / фото</div>
+    <p>Здесь оставлена живая подложка с сайта “Аномалия”. Позже сюда можно добавить готовые видео и фото с инсталляциями как отдельные блоки или локальные медиафайлы.</p>
+  </div>
+</section>
+
+</body>
+</html>
