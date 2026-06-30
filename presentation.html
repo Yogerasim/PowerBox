@@ -3,98 +3,430 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PowerBox — презентация</title>
+  <title>PowerBox — презентация устройства</title>
   <style>
-    :root { --bg:#060708; --fg:#f4f1ea; --muted:#b9b1a4; --accent:#d9ff6a; }
-    * { box-sizing:border-box; }
-    body { margin:0; background:var(--bg); color:var(--fg); font-family:Inter, Arial, sans-serif; }
-    section { min-height:100vh; padding:7vw; display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden; }
-    h1 { font-size:clamp(54px,9vw,132px); line-height:.88; margin:0 0 32px; letter-spacing:-.07em; }
-    h2 { font-size:clamp(38px,6vw,82px); line-height:.95; margin:0 0 28px; letter-spacing:-.05em; }
-    p, li { font-size:clamp(19px,2vw,30px); line-height:1.35; color:var(--muted); max-width:980px; }
-    ul { padding-left:1.2em; }
-    .hero { background:linear-gradient(90deg,rgba(0,0,0,.75),rgba(0,0,0,.15)), url("Docs/Presentation/3.png") center/cover no-repeat; }
-    .grid { display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center; }
-    .image { width:100%; border-radius:28px; box-shadow:0 24px 90px rgba(0,0,0,.55); }
-    .tag { color:var(--accent); text-transform:uppercase; letter-spacing:.18em; font-size:14px; margin-bottom:24px; }
-    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:36px; }
-    .card { border:1px solid rgba(255,255,255,.14); border-radius:24px; padding:28px; background:rgba(255,255,255,.055); min-height:220px; }
-    .card b { font-size:28px; display:block; margin-bottom:12px; }
-    .anomaly { background:linear-gradient(90deg,rgba(0,0,0,.8),rgba(0,0,0,.28)), url("https://zinziverpolina.github.io/anomaly-powerbox-opencall/assets/concept/palki.png") center/cover no-repeat; }
-    .media { background:#030405; padding:0; }
-    iframe { width:100%; height:100vh; border:0; filter:saturate(1.08) contrast(1.05); }
-    .overlay { position:absolute; inset:auto 7vw 7vw 7vw; padding:28px; border-radius:24px; background:rgba(0,0,0,.62); backdrop-filter:blur(14px); }
-    a { color:var(--accent); }
-    @media (max-width:800px){ .grid,.cards{grid-template-columns:1fr;} section{padding:32px;} }
+    :root {
+      --bg: #070807;
+      --bg2: #10120f;
+      --fg: #f4f1e8;
+      --muted: #bcb5a8;
+      --accent: #d8ff5f;
+      --accent2: #7dffb2;
+      --card: rgba(255,255,255,.07);
+      --border: rgba(255,255,255,.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 7vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    h1 {
+      font-size: clamp(56px, 10vw, 150px);
+      line-height: .86;
+      margin: 0 0 32px;
+      letter-spacing: -.08em;
+      max-width: 1200px;
+    }
+
+    h2 {
+      font-size: clamp(38px, 6vw, 86px);
+      line-height: .95;
+      margin: 0 0 32px;
+      letter-spacing: -.06em;
+      max-width: 1100px;
+    }
+
+    h3 {
+      font-size: clamp(26px, 3vw, 42px);
+      margin: 0 0 18px;
+      letter-spacing: -.03em;
+    }
+
+    p {
+      font-size: clamp(20px, 2vw, 31px);
+      line-height: 1.36;
+      color: var(--muted);
+      max-width: 1000px;
+      margin: 0 0 22px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 18px;
+    }
+
+    li {
+      font-size: clamp(19px, 1.8vw, 28px);
+      line-height: 1.34;
+      color: var(--muted);
+      padding: 20px 22px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      backdrop-filter: blur(12px);
+    }
+
+    .tag {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .hero {
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.28)),
+        url("Assets/powerbox-cover.png") center/cover no-repeat;
+    }
+
+    .hero p {
+      max-width: 820px;
+      font-size: clamp(22px, 2.5vw, 38px);
+      color: var(--fg);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .image {
+      width: 100%;
+      border-radius: 32px;
+      box-shadow: 0 30px 120px rgba(0,0,0,.6);
+      border: 1px solid rgba(255,255,255,.12);
+      background: #111;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 26px;
+    }
+
+    .card {
+      min-height: 180px;
+      padding: 30px;
+      border-radius: 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+
+    .card strong {
+      display: block;
+      color: var(--fg);
+      font-size: clamp(24px, 2.3vw, 36px);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+      margin-bottom: 14px;
+    }
+
+    .card span {
+      display: block;
+      color: var(--muted);
+      font-size: clamp(18px, 1.5vw, 24px);
+      line-height: 1.35;
+    }
+
+    .compare {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 28px;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+
+    .compare th,
+    .compare td {
+      padding: 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      font-size: clamp(16px, 1.4vw, 22px);
+      line-height: 1.32;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    .compare th {
+      color: var(--fg);
+      background: rgba(255,255,255,.08);
+    }
+
+    .compare tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .dark {
+      background:
+        radial-gradient(circle at top right, rgba(216,255,95,.18), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(125,255,178,.13), transparent 35%),
+        var(--bg2);
+    }
+
+    .final {
+      text-align: left;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.85), rgba(0,0,0,.45)),
+        url("Docs/Presentation/3.png") center/cover no-repeat;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: -.01em;
+      background: var(--accent);
+      color: #111;
+      border: 1px solid transparent;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--fg);
+      border-color: rgba(255,255,255,.28);
+    }
+
+    .author {
+      margin-top: 42px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,.18);
+      color: var(--fg);
+      font-size: clamp(20px, 1.8vw, 28px);
+    }
+
+    @media (max-width: 860px) {
+      section {
+        padding: 32px 22px;
+      }
+
+      .grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .compare {
+        display: block;
+        overflow-x: auto;
+      }
+    }
   </style>
 </head>
 <body>
 
 <section class="hero">
-  <div class="tag">Hardware / TouchDesigner / MIDI / Wi‑Fi</div>
+  <div class="tag">PowerBox / 8-channel 220V control hub</div>
   <h1>PowerBox</h1>
-  <p>Универсальная коробка управления питанием: 8 каналов 220V для света, инсталляций, сценографии и живых медиа-сцен.</p>
+  <p>Компактное и мощное устройство для дистанционного управления 8 розетками на 220 В.</p>
+  <div class="buttons">
+    <a class="button" href="#what">Что это такое</a>
+    <a class="button secondary" href="https://github.com/Yogerasim/PowerBox">GitHub</a>
+  </div>
 </section>
 
-<section>
+<section id="what">
   <div class="grid">
     <div>
-      <div class="tag">Зачем</div>
-      <h2>Один физический интерфейс для управления пространством</h2>
-      <p>PowerBox превращает обычные электрические устройства в управляемые элементы инсталляции: лампы, LED-блоки питания, дым, моторы, световые объекты и сценографию.</p>
+      <div class="tag">Что такое PowerBox?</div>
+      <h2>Больше, чем просто релейный блок</h2>
+      <p>PowerBox — это компактное и мощное устройство, которое позволяет управлять 8-ю розетками на 220 В дистанционно.</p>
+      <p>Оно подходит как для домашней автоматизации, так и для профессионального применения в студиях, на сцене, в выставочных пространствах и медиа-инсталляциях.</p>
+      <p>Это гибкий, модульный хаб, который уже сейчас работает по Wi-Fi, а в будущем сможет стать частью целой системы умного управления.</p>
     </div>
-    <img class="image" src="Docs/Presentation/1.png" alt="PowerBox presentation image 1">
+    <img class="image" src="Docs/Presentation/1.png" alt="PowerBox image 1">
   </div>
 </section>
 
-<section>
-  <div class="tag">Польза</div>
-  <h2>Что это даёт проекту</h2>
+<section class="dark">
+  <div class="tag">Преимущества PowerBox</div>
+  <h2>Один блок — восемь управляемых каналов</h2>
   <div class="cards">
-    <div class="card"><b>Быстрый монтаж</b><p>8 розеток сразу готовы к управлению без сборки отдельной схемы под каждый объект.</p></div>
-    <div class="card"><b>Живой свет</b><p>Свет может включаться, пульсировать, реагировать на сценарий, музыку или TouchDesigner.</p></div>
-    <div class="card"><b>Повторяемость</b><p>Прошивки, TD-патчи, схемы и документация хранятся в одном репозитории.</p></div>
+    <div class="card">
+      <strong>🔌 8 розеток 220 В</strong>
+      <span>Каждая розетка управляется отдельно. Заявленная мощность — до 3.5 кВт и 16 А на канал при корректной электрической сборке.</span>
+    </div>
+    <div class="card">
+      <strong>🌐 Wi-Fi / UDP</strong>
+      <span>Управление с компьютера, TouchDesigner и других систем по локальной сети.</span>
+    </div>
+    <div class="card">
+      <strong>🎛 USB MIDI-вход</strong>
+      <span>В разработке: управление с синтезаторов, клавиш, драм-машин и DAW.</span>
+    </div>
+    <div class="card">
+      <strong>📱 Смартфон и удалённый доступ</strong>
+      <span>В планах: управление с телефона и сценарии удалённого включения.</span>
+    </div>
+    <div class="card">
+      <strong>🧩 Модульная архитектура</strong>
+      <span>Можно собрать сеть из нескольких устройств и масштабировать систему под проект.</span>
+    </div>
+    <div class="card">
+      <strong>🛠 Открытая прошивка</strong>
+      <span>Код можно кастомизировать под конкретные задачи, протоколы и сценарии.</span>
+    </div>
   </div>
 </section>
 
 <section>
   <div class="grid">
-    <img class="image" src="Docs/Presentation/2.png" alt="PowerBox presentation image 2">
+    <img class="image" src="Docs/Presentation/2.png" alt="PowerBox image 2">
     <div>
-      <div class="tag">Управление</div>
-      <h2>TouchDesigner, UDP, MIDI, Wi‑Fi</h2>
+      <div class="tag">Применения</div>
+      <h2>Где использовать PowerBox</h2>
       <ul>
-        <li>UDP-команды из TouchDesigner</li>
-        <li>web UI и fallback AP-режим ESP</li>
-        <li>MIDI-тесты, включая Roland T‑8</li>
-        <li>ESP8266 D1 legacy-версия и новая ESP32‑S3 версия</li>
+        <li>🎚 Студии: управление светом, приборами, эффектами и вспомогательным оборудованием.</li>
+        <li>🎭 Сцены и выставки: контроль устройств по MIDI/UDP без сложной ручной коммутации.</li>
+        <li>🏠 Умный дом: простое и надёжное включение/выключение розеток.</li>
+        <li>⚡ Мастерская или серверная: включение по расписанию, питание зон, удалённый доступ.</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="anomaly">
-  <div class="tag">Инсталляции</div>
-  <h2>PowerBox как нервная система объекта</h2>
-  <p>В site-specific проектах коробка становится скрытым техническим слоем: она синхронизирует свет, дым, питание и реакции объектов, позволяя ландшафту вести себя как активная система.</p>
-</section>
-
-<section>
+<section class="dark">
   <div class="grid">
     <div>
-      <div class="tag">Версии</div>
-      <h2>Старая и новая коробка</h2>
-      <p>Legacy-версия: ESP8266 D1 + 8-канальный релейный модуль 12V с опторазвязкой. Новая версия: ESP32‑S3‑DevKitC‑1 N16R8 с U.FL/IPEX для внешней антенны + тот же тип реле 8 каналов 12V, 220V 10A по паспорту модуля.</p>
+      <div class="tag">TouchDesigner / MIDI / UDP</div>
+      <h2>PowerBox связывает цифровую сцену и физические приборы</h2>
+      <p>Для медиа-арта и инсталляций PowerBox работает как мост между программной логикой и реальным электричеством.</p>
+      <p>TouchDesigner может отправлять UDP-команды, MIDI-контроллеры могут запускать события, а каждая розетка становится отдельным управляемым каналом.</p>
     </div>
-    <img class="image" src="Docs/Presentation/3.png" alt="PowerBox cover image">
+    <img class="image" src="Docs/Presentation/3.png" alt="PowerBox image 3">
   </div>
 </section>
 
-<section class="media">
-  <iframe src="https://zinziverpolina.github.io/anomaly-powerbox-opencall/" title="Anomaly PowerBox Open Call"></iframe>
-  <div class="overlay">
-    <div class="tag">Готовые проекты / видео / фото</div>
-    <p>Здесь оставлена живая подложка с сайта “Аномалия”. Позже сюда можно добавить готовые видео и фото с инсталляциями как отдельные блоки или локальные медиафайлы.</p>
+<section>
+  <div class="tag">В будущем</div>
+  <h2>Сеть из PowerBox’ов</h2>
+  <p>PowerBox спроектирован как модуль, который может работать как поодиночке, так и в связке с другими блоками.</p>
+  <div class="cards">
+    <div class="card">
+      <strong>🔄 Синхронизация</strong>
+      <span>Один PowerBox сможет синхронизироваться с другим.</span>
+    </div>
+    <div class="card">
+      <strong>🌐 Централизованное управление</strong>
+      <span>Можно будет управлять всей системой из одного интерфейса.</span>
+    </div>
+    <div class="card">
+      <strong>📦 IoT-интеграции</strong>
+      <span>Возможна интеграция в существующие IoT-системы через MQTT, HTTP и другие протоколы.</span>
+    </div>
+    <div class="card">
+      <strong>🧠 Сценарии</strong>
+      <span>Устройства смогут работать по расписанию, событиям, датчикам или внешним командам.</span>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="tag">Почему аналогов почти нет</div>
+  <h2>PowerBox совмещает то, что обычно разделено</h2>
+  <table class="compare">
+    <thead>
+      <tr>
+        <th>Компонент</th>
+        <th>PowerBox</th>
+        <th>Другие устройства</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🔌 Розетки</td>
+        <td>8 × 220 В, 16 А</td>
+        <td>Обычно 1–4 канала или слабые линии</td>
+      </tr>
+      <tr>
+        <td>🎛 MIDI-управление</td>
+        <td>Да, в разработке</td>
+        <td>Почти нигде нет</td>
+      </tr>
+      <tr>
+        <td>🧠 UDP / Wi-Fi</td>
+        <td>Да, с нативной интеграцией TouchDesigner</td>
+        <td>Редко, часто через облачные решения</td>
+      </tr>
+      <tr>
+        <td>🔁 Модульность</td>
+        <td>Можно объединять несколько устройств</td>
+        <td>Обычно нет</td>
+      </tr>
+      <tr>
+        <td>🔧 Кастомизация</td>
+        <td>Открытый код и конфигурация</td>
+        <td>Закрытые коробочные решения</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="final">
+  <div class="tag">Автор проекта</div>
+  <h2>Open hardware для артистов, инженеров и творческих людей</h2>
+  <p>PowerBox разработан Филиппом Герасимовым как open hardware-решение с прицелом на артистов, инженеров и творческих людей.</p>
+  <p>Это DIY-платформа нового уровня, которую можно использовать где угодно — от дома до сцены.</p>
+
+  <div class="author">
+    Автор проекта: <span class="accent">Филипп Герасимов</span>
+  </div>
+
+  <div class="buttons">
+    <a class="button" href="https://github.com/Yogerasim/PowerBox">Открыть репозиторий проекта</a>
+    <a class="button secondary" href="README.md">README</a>
   </div>
 </section>
 
