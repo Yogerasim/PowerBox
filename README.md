@@ -3,7 +3,7 @@
 ![PowerBox cover](Assets/powerbox-cover.png)
 
 <p align="center">
-  <a href="presentation.html">
+  <a href="https://yogerasim.github.io/PowerBox/presentation.html">
     <img src="https://img.shields.io/badge/Открыть_HTML--презентацию-PowerBox-d8ff5f?style=for-the-badge&labelColor=111111" alt="Открыть HTML-презентацию PowerBox">
   </a>
 </p>
@@ -242,5 +242,10 @@ PowerBox — это аппаратно-программная коробка д�
 
 ## HTML-презентация
 
-- [Открыть презентацию PowerBox](presentation.html)
+- [Открыть презентацию PowerBox](https://yogerasim.github.io/PowerBox/presentation.html)
 - [GitHub-репозиторий проекта](https://github.com/Yogerasim/PowerBox)
+
+
+## GitHub Pages
+
+- [Публичная HTML-презентация](https://yogerasim.github.io/PowerBox/presentation.html)
